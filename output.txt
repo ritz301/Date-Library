@@ -1,0 +1,283 @@
+New Date A (Current)
+
+TESTING DATE FORMATS
+
+Default                             :  02-Mar-16
+DateFormat("dd","mm","yyyy")        :  02-03-2016
+DateFormat("d","m","0")             :  2-3
+DateFormat("0","mmm","yyyy")        :  Mar-2016
+DateFormat("0","0","yyyy")          :  March-16
+DateFormat("dd-mm-yyyy")            :  02-03-2016
+DateFormat("d-m-0 ")                :  2-3
+DateFormat("0-mmm-yyyy")            :  Mar-2016
+DateFormat("d-0-yy")                :  2-March-16
+DateFormat("0-0-0")                 :  March
+DateFormat("yyyy-mm-dd")            :  Exception: Invalid date format
+DateFormat("fds0-fdsa-jbsf")        :  Exception: Invalid date format
+DateFormat("0")                     :  Exception: Invalid date format
+
+OUTPUT (in all possible formats)
+
+dd-mmm-yy                           :  02-03-2016 (Default)
+dd-mmm-yyyy                         :  02-Mar-2016
+dd-mmm-0                            :  02-Mar
+dd-mm-yy                            :  02-03-16
+dd-mm-yyyy                          :  02-03-2016
+dd-mm-0                             :  02-03
+dd-m-yy                             :  02-3-16
+dd-m-yyyy                           :  02-3-2016
+dd-m-0                              :  02-3
+dd-0-yy                             :  02-March-16
+dd-0-yyyy                           :  02-March-2016
+dd-0-0                              :  02-March
+d-mmm-yy                            :  2-Mar-16
+d-mmm-yyyy                          :  2-Mar-2016
+d-mmm-0                             :  2-Mar
+d-mm-yy                             :  2-03-16
+d-mm-yyyy                           :  2-03-2016
+d-mm-0                              :  2-03
+d-m-yy                              :  2-3-16
+d-m-yyyy                            :  2-3-2016
+d-m-0                               :  2-3
+d-0-yy                              :  2-March-16
+d-0-yyyy                            :  2-March-2016
+d-0-0                               :  2-March
+0-mmm-yy                            :  2-March
+0-mmm-yyyy                          :  Mar-2016
+0-mmm-0                             :  Mar
+0-mm-yy                             :  03-16
+0-mm-yyyy                           :  03-2016
+0-mm-0                              :  03
+0-m-yy                              :  3-16
+0-m-yyyy                            :  3-2016
+0-m-0                               :  3
+0-0-yy                              :  March-16
+0-0-yyyy                            :  March-2016
+0-0-0                               :  March
+
+New Date B (for input testing)
+INPUT (in all possible formats with proper exception handling)
+To skip input testing at any point of time, enter X
+Enter a date (dd-mmm-yyyy): 11-Feb-2011
+Invalid argument: Input not allowed for this format
+Enter a date (dd-mmm-0): 11-Feb
+Invalid argument: Input not allowed for this format
+Enter a date (dd-mm-yy): 31-05-1996
+Invalid argument: Not in proper format
+Enter a date (dd-mm-yyyy): 31-12-2016
+Input successfully taken
+Enter a date (dd-mm-0): 1
+Invalid argument: Input not allowed for this format
+Enter a date (dd-m-yy): 2
+Invalid argument: Not a valid date
+Enter a date (dd-m-yyyy): vhjasddd
+Invalid argument: Not a valid date
+Enter a date (dd-m-0): hello
+Invalid argument: Input not allowed for this format
+Enter a date (dd-0-yy): a
+Invalid argument: Input not allowed for this format
+Enter a date (dd-0-yyyy): 11-February-1997
+Invalid argument: Input not allowed for this format
+Enter a date (dd-0-0): hello
+Invalid argument: Input not allowed for this format
+Enter a date (d-mmm-yyyy): 11-Feb-1992
+Invalid argument: Input not allowed for this format
+Enter a date (d-mmm-0): 11-Feb
+Invalid argument: Input not allowed for this format
+Enter a date (d-mm-yy): 1-11-2111
+Invalid argument: Not in proper format
+Enter a date (d-mm-yyyy): 1-11-2111
+Out of range
+Enter a date (d-mm-0): A
+Invalid argument: Input not allowed for this format
+Enter a date (d-m-yy): 11-2-76
+Input successfully taken
+Enter a date (d-m-yyyy): 1-1-1122
+Out of range
+Enter a date (d-m-0): 1-1-2
+Invalid argument: Input not allowed for this format
+Enter a date (d-0-yy): 1-1-22
+Invalid argument: Input not allowed for this format
+Enter a date (d-0-yyyy): 4-2-3113
+Invalid argument: Input not allowed for this format
+Enter a date (d-0-0): 1-1-1
+Invalid argument: Input not allowed for this format
+Enter a date (0-mmm-yyyy): 3-3-2
+Invalid argument: Input not allowed for this format
+Enter a date (0-mmm-0): 5-5-33
+Invalid argument: Input not allowed for this format
+Enter a date (0-mm-yy): 5-9-22
+Invalid argument: Input not allowed for this format
+Enter a date (0-mm-yyyy): 1
+Invalid argument: Input not allowed for this format
+Enter a date (0-mm-0): 1-1-1
+Invalid argument: Input not allowed for this format
+Enter a date (0-m-yy): 24-4-22
+Invalid argument: Input not allowed for this format
+Enter a date (0-m-yyyy): 31-2-2441
+Invalid argument: Input not allowed for this format
+Enter a date (0-m-0): 1-1-1
+Invalid argument: Input not allowed for this format
+Enter a date (0-0-yy): 1-1-1
+Invalid argument: Input not allowed for this format
+Enter a date (0-0-yyyy): 4-2-4
+Invalid argument: Input not allowed for this format
+Enter a date (0-0-0): 2-2-4
+Invalid argument: Input not allowed for this format
+
+From now on all input/output will be in the format (dd/mm/yy)
+
+TESTING DATE CONSTRUCTORS
+
+# Date(Day, Month, Year)
+
+Date(D31,Mar,2012)                  :  31-03-12
+Date(static_cast<Day>(87),Feb,1)    :  Domain error: not a valid date
+Date(D31,Feb,2010)                  :  Domain error: not a valid date
+Date(D31,Dec,2060)                  :  Out of range
+
+# Date("Day - Month -Year")
+
+Date("01-04-12")                    :  11-04-12
+Date("30-12-26")                    :  30-12-26
+Date("30-12-216")                   :  Invalid argument: Not in proper format
+Date("30-02-31")                    :  Domain error: not a valid date
+
+Date C("09-02-11")                  : 09-02-11
+
+OPERATORS:
+
+BASIC ASSIGNMENT OPERATOR
+C = A
+New C: 02-03-16
+
+COPY CONSTRUCTOR
+Date D = A
+D: 02-03-16
+
+UNARY ARITHMETIC OPERATORS
+
+++A (next day)
+New A: 03-03-16
+Special cases:
+Month Change case: D as "28-02-61"
+++D
+New D: 01-03-61
+Year Change case: D as "31-12-64"
+++D
+New D: 01-01-65
+Boundary case: D as "31-12-49"
+++D
+Exception: Out of range
+
+A++ (Same day next week)
+New A: 10-03-16
+Special cases:
+Month Change case: D as "25-02-61"
+D++
+New D: 04-03-61
+Year Change case: D as "28-12-64"
+D++
+New D: 04-01-65
+Boundary case: D as "27-12-49"
+D++
+Exception: Out of range
+
+++A (next day)
+New A: 11-03-16
+Special cases:
+Month Change case: D as "28-02-61"
+++D
+New D: 01-03-61
+Year Change case: D as "31-12-64"
+++D
+New D: 01-01-65
+Boundary case: D as "31-12-49"
+++D
+Exception: Out of range
+
+A++ (Same day next week)
+New A: 18-03-16
+Special cases:
+Month Change case: D as "25-02-61"
+D++
+New D: 04-03-61
+Year Change case: D as "28-12-64"
+D++
+New D: 04-01-65
+Boundary case: D as "27-12-49"
+D++
+Exception: Out of range
+
+--A (previous day)
+New A: 17-03-16
+Special cases:
+Month Change case: D as "01-02-61"
+--D
+New D: 31-01-61
+Year Change case: D as "01-12-64"
+--D
+New D: 30-11-64
+Boundary case: D as "01-01-50"
+--D
+Exception: New Date is out of range
+
+A-- (Same day previous week)
+New A: 10-03-16
+Special cases:
+Month Change case: D as "03-02-61"
+D--
+New D: 27-01-61
+Year Change case: D as "04-01-64"
+D--
+New D: 28-12-63
+Boundary case: D as "01-01-50"
+D--
+Exception: New Date is out of range
+
+BINARY ARITHMETIC OPERATORS
+A: 10-03-16
+C: 02-03-16
+D: 01-01-50
+A - D = 24175
+C - A = 8
+C = A + 35
+New C: 14-04-16
+New D: 12-08-49
+Boundary case: 
+C = D + 260
+Out of range
+
+CAST OPERATORS
+A:             06-12-00
+B:             31-12-14
+C:             27-02-94
+D:             03-01-16
+(Month)A:      December
+(Month)D:      January
+(WeekDay)B:    Wednesday
+(WeekDay)C:    Sunday
+(WeekNumber)A: 49
+(WeekNumber)B: 1
+(WeekNumber)D: 53
+A.leapYear():  True
+B.leapYear():  False
+D.leapYear():  True
+
+BINARY RELATIONAL OPERATORS
+A:       06-12-00
+B:       31-12-14
+D:       03-01-16
+E:       06-12-00
+A == E:  True
+A == D:  False
+A != E:  False
+A != D:  True
+A > E:   False
+A >= E:  True
+E > A:   False
+E >= A:  True
+A < B:   True
+B <= A:  False
+B < A:   False
+A <= B:  True
